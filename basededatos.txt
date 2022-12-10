@@ -1,0 +1,198 @@
+CREATE DATABASE dbgarantias;
+
+USE dbgarantias;
+
+CREATE TABLE ROL(
+	id_rol int NOT NULL AUTO_INCREMENT,
+	nombre varchar(20),
+	PRIMARY KEY (id_rol)
+);
+
+CREATE TABLE USUARIO(
+	id_usuario varchar(50) NOT NULL,
+	contrasena varchar(50) NOT NULL,
+	nombre varchar(50),
+	ap_paterno varchar(50),
+	ap_materno varchar(50),
+	dni varchar(21),
+	direccion varchar(50),
+	celular varchar(21),
+	id_rol int(1),
+	genero char(1),
+	foto varchar(50),
+	PRIMARY KEY (id_usuario),
+	FOREIGN KEY (id_rol) REFERENCES ROL(id_rol)	
+);
+
+CREATE TABLE CATEGORIAPRODUCTO(
+	id_categoria int NOT NULL AUTO_INCREMENT,
+	nombre varchar(50) NOT NULL,
+	PRIMARY KEY (id_categoria)	
+);
+
+CREATE TABLE MARCA(
+	id_marca int NOT NULL AUTO_INCREMENT,
+	nombre varchar(50),
+	PRIMARY KEY (id_marca)
+);
+
+CREATE TABLE PRODUCTO(
+	id_producto int NOT NULL AUTO_INCREMENT,
+	nombre varchar(50),
+	descripcion varchar(50),
+	stock int(7),
+	precio int(7),
+	id_marca int(7),
+	id_categoria int(7),
+	PRIMARY KEY (id_producto),
+	FOREIGN KEY (id_categoria) REFERENCES CATEGORIAPRODUCTO(id_categoria),
+	FOREIGN KEY (id_marca) REFERENCES MARCA(id_marca)
+);
+
+CREATE TABLE TIPOGARANTIA(
+	id_tipogarantia int NOT NULL AUTO_INCREMENT,
+	nombre varchar(50),
+	PRIMARY KEY (id_tipogarantia)
+);
+
+CREATE TABLE GARANTIA(
+	id_garantia int NOT NULL AUTO_INCREMENT,
+	id_producto int(7),
+	id_usuario varchar(50),
+	id_tipogarantia int(7),
+	fechavencimiento date,
+	estadorenovar char(1),
+	PRIMARY KEY (id_garantia),
+	FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id_producto),
+	FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario),
+	FOREIGN KEY (id_tipogarantia) REFERENCES TIPOGARANTIA(id_tipogarantia)
+);
+
+CREATE TABLE REVISIÓN(
+	id_revision int NOT NULL AUTO_INCREMENT,
+	id_producto int(7),
+	id_usuario varchar(50),
+	descripcion varchar(300),
+	PRIMARY KEY (id_revision),
+	FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id_producto),
+	FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
+);
+
+CREATE TABLE PEDIDO(
+	id_pedido int NOT NULL AUTO_INCREMENT,
+	id_usuario varchar(50),
+	id_producto int(7),
+	fecha date,
+	totalpagar int(7),
+	estado char(1),
+	PRIMARY KEY (id_pedido),
+	FOREIGN KEY (id_producto) REFERENCES PRODUCTO(id_producto),
+	FOREIGN KEY (id_usuario) REFERENCES USUARIO(id_usuario)
+);
+
+
+PROCEDIMIENTOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+
+EJECUTAR POR SEPARADO
+
+CREATE PROCEDURE LISTARUSUARIO()
+	SELECT * FROM usuario;
+
+
+
+CREATE PROCEDURE LOGIN(in login varchar(50))
+SELECT contrasena, nombre, ap_paterno, ap_materno, dni, direccion, celular, id_rol, foto 
+	FROM usuario
+	WHERE id_usuario = login;
+
+
+CREATE PROCEDURE REPORTES()
+SELECT * FROM GARANTIA JOIN PEDIDO;
+
+
+CREATE PROCEDURE REGISTER(in Vid_usuario varchar(50), in Vcontrasena varchar(50), in Vnombre varchar(50), in Vap_paterno varchar(50), in Vap_materno varchar(50), in Vdni varchar(21), in Vdireccion varchar(50), in Vcelular varchar(50),in Vrol int, in Vgenero char(1), in Vfoto varchar(50))
+INSERT INTO usuario (id_usuario, contrasena, nombre, ap_paterno, ap_materno, dni, direccion, celular, id_rol, genero, foto) VALUES (Vid_usuario, Vcontrasena, Vnombre, Vap_paterno, Vap_materno, Vdni, Vdireccion, Vcelular, Vrol, Vgenero, Vfoto);
+
+
+CREATE PROCEDURE LISTARPRODUCTOS()
+SELECT producto.id_producto, producto.nombre, descripcion, stock, precio, marca.nombre AS 'marca', categoriaproducto.nombre AS 'categoria' FROM producto 
+	INNER JOIN categoriaproducto ON producto.id_categoria = categoriaproducto.id_categoria 
+    INNER JOIN marca ON producto.id_marca = marca.id_marca;
+
+
+
+CREATE PROCEDURE EDITER(in Vid_usuario varchar(50), in Vcontrasena varchar(50), in Vnombre varchar(50), in Vap_paterno varchar(50), in Vap_materno varchar(50), in Vdni varchar(21), in Vdireccion varchar(50), in Vcelular varchar(50), in Vgenero char(1), in Vfoto varchar(50))
+UPDATE usuario SET contrasena = Vcontrasena, nombre = Vnombre, ap_paterno = Vap_paterno,  ap_materno = Vap_materno, dni = Vdni, direccion = Vdireccion, celular = Vcelular, genero = Vgenero, foto = Vfoto WHERE id_usuario = Vid_usuario;
+
+
+CREATE PROCEDURE LISTARREVISION()
+SELECT id_revision, producto.nombre AS 'productonombre', usuario.nombre, usuario.ap_paterno, usuario.ap_materno, revisión.descripcion FROM revisión 
+    INNER JOIN producto ON revisión.id_producto = producto.id_producto
+    INNER JOIN usuario ON revisión.id_usuario = usuario.id_usuario;
+
+
+
+CREATE PROCEDURE LISTARGARANTIAS()
+SELECT id_garantia, producto.nombre, id_usuario, tipogarantia.nombre AS 'tipo', fechavencimiento, estadorenovar FROM GARANTIA
+    INNER JOIN producto ON garantia.id_producto = producto.id_producto
+    INNER JOIN tipogarantia ON tipogarantia.id_tipogarantia = garantia.id_tipogarantia;
+
+
+
+CREATE PROCEDURE LISTARPEDIDOS()
+SELECT id_pedido, id_usuario, producto.nombre AS 'producto', fecha, totalpagar, estado FROM pedido
+    INNER JOIN producto ON producto.id_producto = pedido.id_producto;
+
+
+
+CREATE PROCEDURE LISTARANALISTA()
+SELECT * FROM usuario WHERE id_rol = 2;
+
+
+
+CREATE PROCEDURE ELIMINARUSUARIO(in Vid varchar(50))
+DELETE FROM usuario WHERE id_usuario = Vid;
+
+
+
+CREATE PROCEDURE LISTARCLIENTES()
+SELECT * FROM usuario WHERE id_rol = 3;
+
+
+
+CREATE PROCEDURE EDITARREVISION(in Vid_revision varchar(50), in Vid_producto varchar(50), in Vid_usuario varchar(50), in Vdescripcion varchar(300))
+UPDATE revisión SET id_producto = Vid_producto, id_usuario = Vid_usuario, descripcion = Vdescripcion WHERE id_revision = Vid_revision;
+    
+
+
+CREATE PROCEDURE INSERTARREVISION(in Vid_revision varchar(50),in Vid_producto varchar(50), in Vid_usuario varchar(50), in Vdescripcion varchar(300))
+INSERT INTO REVISIÓN (id_revision, id_producto, id_usuario, descripcion) VALUES (Vid_revision, Vid_producto, Vid_usuario, Vdescripcion);
+
+
+CREATE PROCEDURE LISTARREVISIONUSUARIO()
+SELECT id_revision, producto.nombre AS 'productonombre', usuario.nombre, usuario.ap_paterno, usuario.ap_materno, revisión.descripcion FROM revisión 
+    INNER JOIN producto ON revisión.id_producto = producto.id_producto
+    INNER JOIN usuario ON revisión.id_usuario = usuario.id_usuario;
+
+
+
+CREATE PROCEDURE LISTARPEDIDOSUSUARIO(in Vid varchar(11))
+SELECT id_pedido, id_usuario, producto.nombre AS 'producto', fecha, totalpagar, estado FROM pedido
+    INNER JOIN producto ON producto.id_producto = pedido.id_producto
+    WHERE pedido.id_usuario = Vid;
+
+
+
+CREATE PROCEDURE LISTARGARANTIASUSUARIO(in Vid varchar(11))
+SELECT id_pedido, id_usuario, producto.nombre AS 'producto', fecha, totalpagar, estado FROM pedido
+    INNER JOIN producto ON producto.id_producto = pedido.id_producto
+    WHERE pedido.id_usuario = Vid;
+
+
+
+CREATE PROCEDURE ADQUIRIR(in Vid_usuario varchar(11), in Vid_producto varchar(11), in Vid_pedido varchar(11), in Vtotal varchar(11), in Vfecha varchar(11))
+INSERT INTO pedido (id_pedido, id_usuario, id_producto, fecha, totalpagar, estado) 
+VALUES (Vid_pedido, Vid_usuario, Vid_producto, Vfecha, Vtotal, '0');
+
+
+

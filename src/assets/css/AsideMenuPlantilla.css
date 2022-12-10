@@ -1,0 +1,269 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: #121828;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.css-1tu59u4 {
+  flex: 0 0 auto;
+}
+.css-1o9ypuc {
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  box-shadow: none;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1 0 auto;
+  z-index: 1200;
+  position: fixed;
+  top: 0;
+  outline: 0;
+  left: 0;
+  border-right: 1px solid #e6e8f0;
+  background-color: #111827;
+  color: #fff;
+  width: 280px;
+}
+.css-1g4yje1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.css-19kzrtu {
+  padding: 24px;
+}
+.css-2tcqb0 {
+  height: 42px;
+  width: 42px;
+}
+.css-gajhq5 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.css-1ptzaww {
+  -moz-box-align: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  display: flex;
+  -moz-box-pack: justify;
+  justify-content: space-between;
+  padding: 11px 24px;
+  border-radius: 8px;
+}
+.css-rl5iwp {
+  margin: 0px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  color: inherit;
+}
+.css-upja9j {
+  margin: 0px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.57;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  color: rgb(156, 163, 175);
+}
+.css-1kpphc1 {
+  user-select: none;
+  display: inline-block;
+  fill: currentcolor;
+  flex-shrink: 0;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.5rem;
+  color: rgb(107, 114, 128);
+  width: 14px;
+  height: 14px;
+}
+.css-d5e998 {
+  margin: 24px 0px;
+  flex-shrink: 0;
+  border-width: 0px 0px thin;
+  border-style: solid;
+  border-color: rgb(45, 55, 72);
+}
+.css-i9gxme {
+  -moz-box-flex: 1;
+  flex-grow: 1;
+}
+.css-19wsrat {
+  -moz-box-pack: start;
+  justify-content: flex-start;
+  -moz-box-align: center;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  display: flex;
+  margin-bottom: 4px;
+  padding: 0px 16px;
+}
+.css-129bs90 {
+  display: inline-flex;
+  -moz-box-align: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  outline: 0px;
+  border: 0px none;
+  color: white;
+  margin: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 0.875rem;
+  line-height: 1.75;
+  min-width: 64px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: none;
+  padding: 9px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  -moz-box-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+  text-transform: none;
+  width: 100%;
+}
+
+.css-1l6c7y9 {
+  display: inherit;
+  margin-right: 8px;
+  margin-left: -4px;
+}
+
+.css-1k33q06 {
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  flex-shrink: 0;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.25rem;
+}
+.css-1l6c7y9 > :nth-of-type(1) {
+  font-size: 20px;
+}
+.css-i9gxme {
+  -moz-box-flex: 1;
+  flex-grow: 1;
+}
+.css-1uk9c8u {
+  display: inline-flex;
+  -moz-box-align: center;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px none;
+  margin: 0px;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 0.875rem;
+  line-height: 1.75;
+  min-width: 64px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: none;
+  padding: 9px 24px;
+  border-radius: 8px;
+  color: rgb(209, 213, 219);
+  -moz-box-pack: start;
+  justify-content: flex-start;
+  text-align: left;
+  text-transform: none;
+  width: 100%;
+}
+.css-1uk9c8u .MuiButton-startIcon {
+  color: rgb(156, 163, 175);
+}
+.css-1l6c7y9 {
+  display: inherit;
+  margin-right: 8px;
+  margin-left: -4px;
+}
+.css-1l6c7y9 > :nth-of-type(1) {
+  font-size: 20px;
+}
+.css-1k33q06 {
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  flex-shrink: 0;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.25rem;
+}
+.css-i9gxme {
+  -moz-box-flex: 1;
+  flex-grow: 1;
+}
+
+
+.css-1l6c7y9 {
+  display: inherit;
+  margin-right: 8px;
+  margin-left: -4px;
+}
+.css-1l6c7y9 > :nth-of-type(1) {
+  font-size: 20px;
+}
+.css-1k33q06 {
+  user-select: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  flex-shrink: 0;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-size: 1.25rem;
+}
+
+
+/* SEPARAMOS */
+.css-1xqczjx {
+    margin: 0px;
+    flex-shrink: 0;
+    border-width: 0px 0px thin;
+    border-style: solid;
+    border-color: rgb(45, 55, 72);
+}
+
+.selectedpage{
+  color: rgb(16, 185, 129);
+  
+  background-color: rgba(255, 255, 255, 0.08);
+
+}
+.selectedpage>span>svg{
+  fill: rgb(16, 185, 129);
+}
