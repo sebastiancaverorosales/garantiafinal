@@ -19,7 +19,6 @@ function sendData() {
 }
 sendData();
 data = cookies.get("garantiasusuario");
-console.log(data);
 if (data != undefined) {
   if (data[0]["success"] != 0) {
     data.map(function (x) {
