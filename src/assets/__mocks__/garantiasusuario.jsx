@@ -19,6 +19,7 @@ function sendData() {
 }
 sendData();
 data = cookies.get("garantiasusuario");
+console.log(data);
 if (data != undefined) {
   if (data[0]["success"] != 0) {
     data.map(function (x) {
@@ -26,7 +27,7 @@ if (data != undefined) {
         id: x.id_garantia,
         Usuario: x.id_usuario,
         Tipo: x.tipo,
-        Producto: x.nombre,
+        Producto: x.producto,
         Fecha: x.fechavencimiento,
         Estado: x.estadorenovar,
       });

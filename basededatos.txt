@@ -184,9 +184,10 @@ SELECT id_pedido, id_usuario, producto.nombre AS 'producto', fecha, totalpagar, 
 
 
 CREATE PROCEDURE LISTARGARANTIASUSUARIO(in Vid varchar(11))
-SELECT id_pedido, id_usuario, producto.nombre AS 'producto', fecha, totalpagar, estado FROM pedido
-    INNER JOIN producto ON producto.id_producto = pedido.id_producto
-    WHERE pedido.id_usuario = Vid;
+SELECT id_garantia, id_usuario, producto.nombre AS 'producto', tipogarantia.nombre AS 'tipo', fechavencimiento, estadorenovar FROM garantia
+    INNER JOIN producto ON producto.id_producto = garantia.id_producto
+	INNER JOIN tipogarantia ON tipogarantia.id_tipogarantia = garantia.id_tipogarantia
+    WHERE garantia.id_usuario = Vid;
 
 
 
